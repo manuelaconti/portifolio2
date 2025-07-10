@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Currículo - Manuela Conti</title>
+
+  <!-- Fonte mais elegante e feminina -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Poppins:wght@300;600&display=swap" rel="stylesheet" />
+
+  <!-- FontAwesome para ícones -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+  <!-- tsParticles para fundo animado -->
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@3.1.0/tsparticles.bundle.min.js"></script>
+
+  <style>
+    /* Variáveis de cores claras e escuras */
+    :root {
+      --bg-color: #fff5f8;
+      --text-color: #4b3b4f;
+      --accent-color: #d16ba5;
+      --accent-color-light: #f8d7e4;
+      --button-bg: #d16ba5;
+      --button-hover: #b35d8d;
+      --shadow-color: rgba(209, 107, 165, 0.3);
+    }
+
+    body.dark-mode {
+      --bg-color: #2c1b2f;
+      --text-color: #f0d9f2;
+      --accent-color: #f799d6;
+      --accent-color-light: #5b3562;
+      --button-bg: #f799d6;
+      --button-hover: #d17bb8;
+      --shadow-color: rgba(247, 153, 214, 0.4);
+    }
+
+    /* Reset e base */
+    * {
+      margin: 0; padding: 0; box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      transition: background-color 0.5s ease, color 0.5s ease;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    /* Fundo animado com partículas atrás */
+    #particles-js {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -10;
+      background: var(--bg-color);
+    }
+
+    /* Navegação lateral feminina e minimalista */
+    nav {
+      position: fixed;
+      left: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      z-index: 1000;
+    }
+
+    nav a {
+      background: var(--accent-color-light);
+      color: var(--accent-color);
+      padding: 12px 18px;
+      border-radius: 30px;
+      font-weight: 600;
+      text-decoration: none;
+      font-family: 'Playfair Display', serif;
+      box-shadow: 0 4px 8px var(--shadow-color);
+      transition: background-color 0.3s, color 0.3s;
+      text-align: center;
+      width: 130px;
+    }
+
+    nav a:hover {
+      background: var(--accent-color);
+      color: #fff;
+      box-shadow: 0 6px 15px var(--accent-color);
+    }
+
+    /* Cabeçalho diferente, full width com ondas e foto circular */
+    header {
+      width: 100%;
+      padding: 60px 20px 80px;
+      background: linear-gradient(135deg, var(--accent-color) 20%, var(--accent-color-light) 90%);
+      clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+      color: white;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 8px 15px var(--shadow-color);
+      font-family: 'Playfair Display', serif;
+      user-select: none;
+    }
+
+    header img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      border: 4px solid white;
+      object-fit: cover;
+      box-shadow: 0 6px 12px rgba(255 255 255 / 0.4);
+      cursor: pointer;
+      transition: transform 0.35s ease;
+      margin-bottom: 20px;
+    }
+
+    header img:hover {
+      transform: scale(1.1) rotate(5deg);
+      box-shadow: 0 10px 25px rgba(255 255 255 / 0.7);
+    }
+
+    header h1 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      margin-bottom: 8px;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+
+    header p {
+      font-size: 1.2rem;
+      font-weight: 300;
+      letter-spacing: 1.5px;
+      font-style: italic;
+      text-shadow: 0 1px 4px rgba(0,0,0,0.15);
+      margin-bottom: 25px;
+    }
+
+    /* Botões grandes arredondados com sombra */
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .buttons a, .buttons button {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 1.1rem;
+      padding: 12px 28px;
+      border-radius: 40px;
+      border: none;
+      cursor: pointer;
+      background: white;
+      color: var(--accent-color);
+      box-shadow: 0 6px 15px var(--shadow-color);
+      transition: all 0.3s ease;
+      text-decoration: none;
+      user-select: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .buttons a:hover,
+    .buttons button:hover {
+      background: var(--accent-color);
+      color: white;
+      box-shadow: 0 8px 25px var(--accent-color);
+      transform: translateY(-3px);
+    }
+
+    /* Container do conteúdo, com bordas arredondadas e sombra suave */
+    .container {
+      max-width: 720px;
+      background: white;
+      margin: -60px auto 60px;
+      padding: 40px 30px 50px;
+      border-radius: 25px;
+      box-shadow: 0 15px 35px var(--shadow-color);
+      font-size: 1.05rem;
+      line-height: 1.6;
+      color: var(--text-color);
+      position: relative;
+      z-index: 1;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body.dark-mode .container {
+      background: #3a2a4a;
+      color: var(--text-color);
+    }
+
+    section {
+      margin-bottom: 40px;
+    }
+
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--accent-color);
+      margin-bottom: 20px;
+      border-left: 5px solid var(--accent-color);
+      padding-left: 12px;
+      user-select: none;
+    }
+
+    ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+
+    ul li {
+      background: var(--accent-color-light);
+      margin-bottom: 12px;
+      padding: 12px 18px;
+      border-radius: 20px;
+      color: var(--accent-color);
+      font-weight: 600;
+      box-shadow: 0 3px 8px var(--shadow-color);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      user-select: none;
+    }
+
+    ul li::before {
+      content: "✓";
+      color: var(--accent-color);
+      font-weight: 900;
+      font-size: 1.2rem;
+      margin-right: 6px;
+      user-select: none;
+    }
+
+    /* Rodapé mais suave e feminino */
+    footer {
+      background: var(--accent-color-light);
+      color: var(--accent-color);
+      text-align: center;
+      padding: 28px 20px;
+      border-radius: 0 0 30px 30px;
+      font-family: 'Poppins', sans-serif;
+      box-shadow: 0 -6px 15px var(--shadow-color);
+      user-select: none;
+    }
+
+    footer p {
+      margin-bottom: 12px;
+      font-weight: 600;
+      font-size: 1rem;
+      letter-spacing: 0.02em;
+    }
+
+    /* Ícones sociais removidos conforme pedido */
+
+    /* Zoom da imagem */
+    .zoom-container {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      background: rgba(255, 255, 255, 0.95);
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      cursor: zoom-out;
+      user-select: none;
+    }
+
+    .zoom-container img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 25px;
+      box-shadow: 0 8px 30px var(--accent-color);
+      animation: zoomIn 0.35s ease forwards;
+    }
+
+    @keyframes zoomIn {
+      from { opacity: 0; transform: scale(0.7); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    /* Responsividade */
+    @media (max-width: 768px) {
+      nav {
+        left: auto;
+        top: auto;
+        bottom: 0;
+        width: 100%;
+        flex-direction: row;
+        justify-content: center;
+        gap: 30px;
+        padding: 12px 0;
+        background: var(--accent-color-light);
+        border-radius: 30px 30px 0 0;
+        box-shadow: 0 -6px 15px var(--shadow-color);
+      }
+
+      nav a {
+        width: auto;
+        padding: 10px 18px;
+        font-size: 1rem;
+      }
+
+      .container {
+        margin: -40px 15px 50px;
+        padding: 30px 20px 40px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- fundo animado -->
+  <div id="particles-js"></div>
+
+  <!-- menu lateral -->
+  <nav>
+    <a href="#sobre">Sobre</a>
+    <a href="#habilidades">Habilidades</a>
+    <a href="#experiencia">Experiência</a>
+    <a href="#contato">Contato</a>
+  </nav>
+
+  <!-- cabeçalho -->
+  <header>
+    <img src="manu.jpeg" alt="Foto de Manuela Conti" onclick="expandirImagem(this)" />
+    <h1>MANUELA CONTI</h1>
+    <p>DESENVOLVEDORA WEB JUNIOR</p>
+    <div class="buttons">
+      <a href="curriculo.manyela.pdf" download><i class="fas fa-file-download"></i> 📄 Baixar Currículo</a>
+      <button onclick="alternarTema()" aria-label="Alternar tema"><i class="fas fa-adjust"></i> 🎨 Alternar Tema</button>
+    </div>
+  </header>
+
+  <!-- conteúdo -->
+  <main class="container">
+    <section id="sobre">
+      <h2>Sobre Mim</h2>
+      <p>Estudante de Ciência de Dados, sou uma pessoa muito organizada e com interesse em aprender mais sobre o universo da programação. Sou apaixonada pela área de web design e sempre busco aprender e me aperfeiçoar mais. 💻✨</p>
+    </section>
+
+    <section id="habilidades">
+      <h2>Habilidades</h2>
+      <ul>
+        <li>💻 HTML, CSS, JavaScript</li>
+        <li>🗄️ Banco de Dados MySQL</li>
+        <li>📊 Power BI</li>
+        <li>🗣️ Comunicação e Trabalho em Equipe</li>
+      </ul>
+    </section>
+
+    <section id="experiencia">
+      <h2>Experiência</h2>
+      <p><strong>🎓 Cursando ciencia de dados</strong> — 2024/2025<br>
+        <br>
+      </p>
+    </section>
+  </main>
+
+  <!-- rodapé -->
+  <footer id="contato">
+    <p>📞 Contato: ✉️ manuelaconti0202@gmail.com | 📱 (48) 9765-1678</p>
+  </footer>
+
+  <!-- zoom da imagem -->
+  <div class="zoom-container" id="zoom">
+    <img id="zoomed-img" src="" alt="Imagem ampliada" />
+  </div>
+
+  <!-- scripts -->
+  <script>
+    // Alternar tema claro/escuro com persistência no localStorage
+    function alternarTema() {
+      document.body.classList.toggle('dark-mode');
+      localStorage.setItem('tema', document.body.classList.contains('dark-mode') ? 'escuro' : 'claro');
+    }
+
+    // Verifica tema salvo e aplica no carregamento
+    window.onload = () => {
+      if(localStorage.getItem('tema') === 'escuro') {
+        document.body.classList.add('dark-mode');
+      }
+    }
+
+    // Inicializa partículas com estilo feminino: formas arredondadas, cores rosa claras
+    tsParticles.load("particles-js", {
+      background: { color: { value: "transparent" } },
+      fpsLimit: 60,
+      particles: {
+        color: { value: "#d16ba5" },
+        links: {
+          enable: true,
+          color: "#f8d7e4",
+          distance: 120,
+          opacity: 0.3,
+          width: 1
+        },
+        move: { enable: true, speed: 1, outModes: "bounce" },
+        number: { value: 60 },
+        shape: { type: "circle" },
+        size: { value: { min: 2, max: 4 } },
+        opacity: { value: 0.4 }
+      },
+      interactivity: {
+        events: {
+          onHover: { enable: true, mode: "grab" },
+          onClick: { enable: true, mode: "push" }
+        },
+        modes: {
+          grab: { distance: 150, links: { opacity: 0.5 } },
+          push: { quantity: 4 }
+        }
+      },
+      detectRetina: true
+    });
+
+    // Zoom na imagem do perfil
+    function expandirImagem(el) {
+      const zoom = document.getElementById('zoom');
+      const zoomedImg = document.getElementById('zoomed-img');
+      zoomedImg.src = el.src;
+      zoom.style.display = 'flex';
+    }
+
+    // Fecha zoom ao clicar no fundo
+    document.getElementById('zoom').addEventListener('click', () => {
+      document.getElementById('zoom').style.display = 'none';
+    });
+  </script>
+
+</body>
+</html>
